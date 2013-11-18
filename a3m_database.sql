@@ -120,9 +120,29 @@ CREATE TABLE IF NOT EXISTS `a3m_acl_permission` (
   `key` varchar(80) COLLATE utf8_unicode_ci NOT NULL,
   `description` varchar(160) COLLATE utf8_unicode_ci DEFAULT NULL,
   `suspendedon` datetime DEFAULT NULL,
+  `is_system` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `key` (`key`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `a3m_acl_permission`
+--
+
+INSERT INTO `a3m_acl_permission` (`key`, `description`, `is_system`) VALUES
+('create_roles', 'Create new roles', 1),
+('retrieve_roles', 'View existing roles', 1),
+('update_roles', 'Update existing roles', 1),
+('delete_roles', 'Delete existing roles', 1),
+('create_permissions', 'Create new permissions', 1),
+('retrieve_permissions', 'View existing permissions', 1),
+('update_permissions', 'Update existing permissions', 1),
+('delete_permissions', 'Delete existing permissions', 1),
+('create_users', 'Create new users', 1),
+('retrieve_users', 'View existing users', 1),
+('update_users', 'Update existing users', 1),
+('delete_users', 'Delete existing users', 1),
+('ban_users', 'Ban and Unban existing users', 1);
 
 -- --------------------------------------------------------
 
@@ -134,10 +154,19 @@ CREATE TABLE IF NOT EXISTS `a3m_acl_role` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(80) COLLATE utf8_unicode_ci NOT NULL,
   `description` varchar(160) COLLATE utf8_unicode_ci NOT NULL,
-  `suspendedon` datetime NOT NULL,
+  `suspendedon` datetime DEFAULT NULL,
+  `is_system` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `role_name` (`name`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `a3m_acl_role`
+--
+
+INSERT INTO `a3m_acl_role` (`name`, `description`, `is_system`) VALUES
+('Admin', 'Website Administrator', 1),
+('User', 'Website user', 0);
 
 -- --------------------------------------------------------
 
@@ -176,21 +205,29 @@ CREATE TABLE IF NOT EXISTS `a3m_rel_role_permission` (
   PRIMARY KEY (`role_id`,`permission_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Giving the Admin role (1) all permissions
+--
+
+INSERT INTO `a3m_rel_role_permission` (`role_id`, `permission_id`) 
+SELECT 1, `id` FROM `a3m_acl_permission`;
+
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ci_session`
+-- Table structure for table `ci_sessions`
 --
 
-CREATE TABLE IF NOT EXISTS `ci_session` (
-  `session_id` varchar(40) NOT NULL DEFAULT '0',
-  `ip_address` varchar(45) NOT NULL DEFAULT '0',
-  `user_agent` varchar(50) NOT NULL,
-  `last_activity` int(10) unsigned NOT NULL DEFAULT '0',
-  `user_data` text NOT NULL,
-  PRIMARY KEY (`session_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+CREATE TABLE IF NOT EXISTS  `ci_sessions` (
+    `session_id` varchar(40) DEFAULT '0' NOT NULL,
+    `ip_address` varchar(45) DEFAULT '0' NOT NULL,
+    `user_agent` varchar(120) NOT NULL,
+    `last_activity` int(10) unsigned DEFAULT 0 NOT NULL,
+    `user_data` text NOT NULL,
+    PRIMARY KEY (`session_id`, `ip_address`, `user_agent`),
+    KEY `last_activity_idx` (`last_activity`)
+);
 
 -- --------------------------------------------------------
 

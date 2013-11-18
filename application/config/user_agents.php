@@ -18,7 +18,7 @@
  *
  * @package		CodeIgniter
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2012, EllisLab, Inc. (http://ellislab.com/)
+ * @copyright	Copyright (c) 2008 - 2013, EllisLab, Inc. (http://ellislab.com/)
  * @license		http://opensource.org/licenses/AFL-3.0 Academic Free License (AFL 3.0)
  * @link		http://codeigniter.com
  * @since		Version 1.0
@@ -36,6 +36,7 @@
 */
 
 $platforms = array(
+	'windows nt 6.2'	=> 'Windows 8',
 	'windows nt 6.1'	=> 'Windows 7',
 	'windows nt 6.0'	=> 'Windows Vista',
 	'windows nt 5.2'	=> 'Windows 2003',
@@ -100,7 +101,8 @@ $browsers = array(
 	'Links'			=> 'Links',
 	'hotjava'		=> 'HotJava',
 	'amaya'			=> 'Amaya',
-	'IBrowse'		=> 'IBrowse'
+	'IBrowse'		=> 'IBrowse',
+	'Maxthon'		=> 'Maxthon'
 );
 
 $mobiles = array(
@@ -146,6 +148,7 @@ $mobiles = array(
 	'ipaq'			=> 'HP iPaq',
 	'mot-'			=> 'Motorola',
 	'playstation portable'	=> 'PlayStation Portable',
+	'playstation 3'		=> 'PlayStation 3',
 	'hiptop'		=> 'Danger Hiptop',
 	'nec-'			=> 'NEC',
 	'panasonic'		=> 'Panasonic',
@@ -155,10 +158,10 @@ $mobiles = array(
 	'spv'			=> 'SPV',
 	'zte'			=> 'ZTE',
 	'sendo'			=> 'Sendo',
-	'dsi'			=> 'Nintendo DSi',
-	'ds'			=> 'Nintendo DS',
+	'nintendo dsi'	=> 'Nintendo DSi',
+	'nintendo ds'	=> 'Nintendo DS',
+	'nintendo 3ds'	=> 'Nintendo 3DS',
 	'wii'			=> 'Nintendo Wii',
-	'3ds'			=> 'Nintendo 3DS',
 	'open web'		=> 'Open Web',
 	'openweb'		=> 'OpenWeb',
 
@@ -205,6 +208,7 @@ $mobiles = array(
 $robots = array(
 	'googlebot'		=> 'Googlebot',
 	'msnbot'		=> 'MSNBot',
+	'baiduspider'	=> 'Baiduspider',
 	'bingbot'		=> 'Bing',
 	'slurp'			=> 'Inktomi Slurp',
 	'yahoo'			=> 'Yahoo',
@@ -212,35 +216,7 @@ $robots = array(
 	'fastcrawler'	=> 'FastCrawler',
 	'infoseek'		=> 'InfoSeek Robot 1.0',
 	'lycos'			=> 'Lycos',
-	
-	// Custom added
-	'Twitterbot'		=> 'Twitterbot',
-	'LinkedInBot'	=> 'LinkedInBot',
-	'MJ12bot'		=> 'Majestic Bot',
-	'TweetmemeBot'	=>	'TweetmemeBot',
-	'YandexBot'	=> 'YandexBot',
-	'ShowyouBot'	=> 'ShowyouBot',
-	'DCPbot'	=> 'DCPbot',
-	'SeznamBot'	=> 'SeznamBot',
-	'SemrushBot'	=> 'SemrushBot',
-	'NextGenSearchBot'	=> 'NextGenSearchBot',
-	'MLBot'	=> 'MLBot',
-	'EventGuruBot'	=> 'EventGuruBot',
-	'aiHitBot'	=> 'aiHitBot',
-	'SWEBot'	=> 'SWEBot',
-	'bitlybot'	=> 'bitlybot',
-	'PaperLiBot'	=> 'PaperLiBot',
-	'TweetedTimes' => 'TweetedTimes',
-	'Exabot'	=> 'Exabot',
-	'RADaR-Bot' => 'RADaR-Bot',
-	'AhrefsBot'	=> 'AhrefsBot',
-	'AcoonBot'	=> 'AcoonBot',
-	'percbotspider'	=> 'percbotspider',
-	'unwindfetchor' => 'UnwindFetchor',
-	'butterfly' => 'ButterFly',
-	'Baiduspider' => 'Baiduspider',
-	'facebookexternalhit' => 'facebookexternalhit'
-	
+	'yandex'		=> 'YandexBot'
 );
 
 /* End of file user_agents.php */
